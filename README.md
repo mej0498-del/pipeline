@@ -11,7 +11,7 @@ A Snakemake workflow for variant calling, from raw FASTQ files to a VCF, with co
 | 1 | Quality control and trimming of raw reads | fastp |
 | 2 | Mapping of trimmed reads to the reference genome | BWA |
 | 3 | Sorting, indexing and BAM processing (to be defined) | samtools |
-| 4 | Coverage calculation | samtools |
+| 4 | Coverage calculation | bedtools |
 | 5 | Post-processing of alignments, e.g. duplicate marking (to be defined) | GATK |
 | 6 | Further preparation for variant calling (to be defined) | GATK |
 | 7 | Variant calling | GATK HaplotypeCaller |
