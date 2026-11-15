@@ -1,0 +1,13 @@
+name: lyh
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - snakemake
+  - pandas
+  - matplotlib
+  - fastp
+  - bwa
+  - samtools
+  - openjdk=17
