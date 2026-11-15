@@ -1,5 +1,4 @@
 # pipeline
-# pipeline
 
 A Snakemake workflow for variant calling, from raw FASTQ files to a VCF, with coverage statistics and plots at the end.
 
