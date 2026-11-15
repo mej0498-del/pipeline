@@ -24,7 +24,20 @@ def validate_samples(df):
             errors.append(f"{name}: r1 not found ({row['r1']})")
         if not row["r2"] or not Path(row["r2"]).exists():
             errors.append(f"{name}: short reads need r2 ({row['r2']})")
-        elif row["read_type"] == "long":
-            raise ValueError(f"{name}: this pipeline is not built for long reads")
     if errors:
         raise ValueError("Sample sheet problems:\n  " + "\n  ".join(errors))
+
+validate_samples(samples)
+samples = samples.set_index("sample", drop=False)
+SAMPLES = list(samples.index)
+
+# Helper functions for rules to find each sample's reads
+def read_1(wildcards):
+    return samples.loc[wildcards.sample, "r1"]
+def read_2(wildcards):
+    return samples.loc[wildcards.sample, "r2"]
+
+rule validated_samples:
+    output: "results/inputs/samples_validated.tsv"
+    run:
+        samples.to_csv(output[0], sep="\t", index=False)

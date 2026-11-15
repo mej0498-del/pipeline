@@ -1,0 +1,7 @@
+include: "rules/common.smk"
+
+
+rule all:
+    input:
+        "results/inputs/samples_validated.tsv",
+        expand("results/fastp/{sample}_R1.trimmed.fastq.gz", sample=SAMPLES),
