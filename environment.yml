@@ -11,3 +11,4 @@ dependencies:
   - bwa
   - samtools
   - openjdk=17
+  - bedtools

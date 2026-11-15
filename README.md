@@ -23,6 +23,30 @@ A Snakemake workflow for variant calling, from raw FASTQ files to a VCF, with co
 - Conda / Mamba
 - Snakemake, fastp, BWA, samtools, GATK4, OpenJDK 17
 
+## Layout
+
+```
+pipeline/
+├── environment.yml
+├── config.yaml
+├── samples.tsv
+├── README.md
+├── workflow/
+│   ├── Snakefile              # includes + rule all
+│   ├── rules/
+│   │   ├── common.smk         # validation and some helper functions
+│   │   ├── qc.smk             # fastp
+│   │   ├── reference.smk      # bwa_index
+│   │   ├── mapping.smk        # bwa_mem, samtools, java
+│   │   ├── coverage.smk       # bedtools
+│   │   └── calling.smk        # gatk4 haplotypecaller
+│   ├── envs/                  # conda environments
+│   └── scripts/               # helper Python/R scripts
+├── resources/                 # reference genome
+├── data/raw/                  # raw FASTQ files 
+└── results/                   # pipeline output 
+```
+
 ## Installation
 
 ```bash
