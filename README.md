@@ -90,7 +90,7 @@ python workflow/scripts/make_samples.py
 
 The script lists every `*_R1.fastq.gz` file in `data/raw/` and writes the sample sheet necessary with the columns `sample`, `read_type`, `r1`, `r2`. You can also write `samples.tsv` by hand if you are working with small number of samples
 
-## Configuration
+### Configuration
 
 All settings live in `config.yaml`. The defaults are intentionally minimal, so you can tune the pipeline to your liking.
 
