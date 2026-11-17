@@ -41,7 +41,9 @@ pipeline/
 │   │   ├── coverage.smk       # bedtools
 │   │   └── calling.smk        # gatk4 haplotypecaller
 │   ├── envs/                  # conda environments
-│   └── scripts/               # helper Python/R scripts
+│   └── scripts/
+│       ├── make_samples.py        # generates samples.tsv from data/raw/
+│       └── fastp_summary.py       # combines fastp JSON reports into one table
 ├── resources/                 # reference genome
 ├── data/raw/                  # raw FASTQ files 
 └── results/                   # pipeline output 
@@ -68,6 +70,15 @@ Dry run:
 ```bash
 snakemake -n
 ```
+### Prepare the sample sheet
+
+Place paired-end reads in `data/raw/` named `{sample}_R1.fastq.gz` and `{sample}_R2.fastq.gz`, then generate `samples.tsv`:
+
+```bash
+python workflow/scripts/make_samples.py
+```
+
+The script lists every `*_R1.fastq.gz` file in `data/raw/` and writes the sample sheet necessary with the columns `sample`, `read_type`, `r1`, `r2`. You can also write `samples.tsv` by hand if you are working with small number of samples
 
 Run the pipeline:
 
