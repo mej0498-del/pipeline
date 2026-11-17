@@ -1,7 +1,8 @@
 include: "rules/common.smk"
-
+include: "rules/qc.smk"
 
 rule all:
     input:
         "results/inputs/samples_validated.tsv",
         expand("results/fastp/{sample}_R1.trimmed.fastq.gz", sample=SAMPLES),
+        "results/qc/read_qc_summary.tsv",

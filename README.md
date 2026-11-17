@@ -32,21 +32,31 @@ pipeline/
 ├── samples.tsv
 ├── README.md
 ├── workflow/
-│   ├── Snakefile              # includes + rule all
+│   ├── Snakefile                   # includes + rule all
 │   ├── rules/
-│   │   ├── common.smk         # validation and some helper functions
-│   │   ├── qc.smk             # fastp
-│   │   ├── reference.smk      # bwa_index
-│   │   ├── mapping.smk        # bwa_mem, samtools, java
-│   │   ├── coverage.smk       # bedtools
-│   │   └── calling.smk        # gatk4 haplotypecaller
-│   ├── envs/                  # conda environments
+│   │   ├── common.smk              # validation and some helper functions
+│   │   ├── qc.smk                  # fastp
+│   │   ├── reference.smk           # bwa_index
+│   │   ├── mapping.smk             # bwa_mem, samtools, java
+│   │   ├── coverage.smk            # bedtools
+│   │   └── calling.smk             # gatk4 haplotypecaller
+│   ├── envs/                       # conda environments
 │   └── scripts/
-│       ├── make_samples.py        # generates samples.tsv from data/raw/
-│       └── fastp_summary.py       # combines fastp JSON reports into one table
-├── resources/                 # reference genome
-├── data/raw/                  # raw FASTQ files 
-└── results/                   # pipeline output 
+│       ├── make_samples.py         # generates samples.tsv from data/raw/
+│       └── fastp_summary.py        # combines fastp JSON reports into one table
+├── resources/                      # reference genome (not tracked by git)
+├── data/raw/                       # raw FASTQ files (not tracked by git)
+├── logs/                           # one log file per rule and sample (created by the pipeline)
+└── results/                        # pipeline output (created by the pipeline)
+    ├── inputs/
+    │   └── samples_validated.tsv   # copy of the validated sample sheet
+    ├── trimmed/
+    │   ├── {sample}_R1.fastq.gz    
+    │   └── {sample}_R2.fastq.gz
+    └── qc/
+        ├── {sample}.fastp.html     # per-sample fastp report
+        ├── {sample}.fastp.json     # per-sample fastp metrics
+        └── read_qc_summary.tsv     # one table with all samples
 ```
 
 ## Installation
