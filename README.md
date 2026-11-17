@@ -53,6 +53,7 @@ pipeline/
     ├── trimmed/
     │   ├── {sample}_R1.fastq.gz    
     │   └── {sample}_R2.fastq.gz
+    ├── mapped/
     └── qc/
         ├── {sample}.fastp.html     # per-sample fastp report
         ├── {sample}.fastp.json     # per-sample fastp metrics
