@@ -1,8 +1,13 @@
 samples: sample.tsv
+reference: "resources/reference.fasta"
 
-# You can add extra options passed straight to fastp
+# You can add extra options passed straight to fastp and bwa
 fastp:
+  extra: ""
+
+bwa:
   extra: ""
 
 threads:
   fastp: 4
+  bwa: 6
