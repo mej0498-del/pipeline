@@ -143,3 +143,7 @@ If you use this pipeline, please cite the tools it relies on:
 
 - fastp: Chen S, Zhou Y, Chen Y, Gu J. Bioinformatics 2018; 34(17): i884-i890. doi:10.1093/bioinformatics/bty560
 - fastp (newer features): Chen S. iMeta 2023; 2: e107. doi:10.1002/imt2.107
+- bwa-mem: Li H. (2013) Aligning sequence reads, clone sequences and assembly contigs with BWA-MEM. arXiv:1303.3997v2 [q-bio.GN]. (if you use the BWA-MEM algorithm or the fastmap command, or want to cite the whole BWA package)
+- samtools: Twelve years of SAMtools and BCFtools
+Petr Danecek, James K Bonfield, Jennifer Liddle, John Marshall, Valeriu Ohan, Martin O Pollard, Andrew Whitwham, Thomas Keane, Shane A McCarthy, Robert M Davies, Heng Li
+GigaScience, Volume 10, Issue 2, February 2021, giab008, https://doi.org/10.1093/gigascience/giab008
