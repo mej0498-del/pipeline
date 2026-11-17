@@ -20,3 +20,15 @@ rule bwa_mem:
             {input.rf} {input.r1} {input.r2} \
          | samtools sort -@ {threads} -o {output.bam} -) 2> {log}
         """
+
+rule samtools_flagstat:
+    input:
+        "results/mapped/{sample}.sorted.bam",
+    output:
+        "results/mapped/{sample}.flagstat.txt",
+    log:
+        "logs/samtools_flagstat/{sample}.log",
+    conda:
+        "../envs/mapping.yaml"
+    shell:
+        "samtools flagstat {input} > {output} 2> {log}"
