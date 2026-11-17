@@ -1,1 +1,8 @@
 samples: sample.tsv
+
+# You can add extra options passed straight to fastp
+fastp:
+  extra: ""
+
+threads:
+  fastp: 4
