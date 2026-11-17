@@ -44,8 +44,8 @@ pipeline/
 │   └── scripts/
 │       ├── make_samples.py         # generates samples.tsv from data/raw/
 │       └── fastp_summary.py        # combines fastp JSON reports into one table
-├── resources/                      # reference genome (not tracked by git)
-├── data/raw/                       # raw FASTQ files (not tracked by git)
+├── resources/                      # reference genome 
+├── data/raw/                       # raw FASTQ files
 ├── logs/                           # one log file per rule and sample (created by the pipeline)
 └── results/                        # pipeline output (created by the pipeline)
     ├── inputs/
@@ -54,6 +54,10 @@ pipeline/
     │   ├── {sample}_R1.fastq.gz    
     │   └── {sample}_R2.fastq.gz
     ├── mapped/
+    │   ├── {sample}.mdup.bam           # final BAM
+    │   ├── {sample}.mdup.bam.bai       # BAM index
+    │   ├── {sample}.mdup.metrics.txt   # duplicate statistics
+    │   └── {sample}.flagstat.txt       # mapping statistics
     └── qc/
         ├── {sample}.fastp.html     # per-sample fastp report
         ├── {sample}.fastp.json     # per-sample fastp metrics

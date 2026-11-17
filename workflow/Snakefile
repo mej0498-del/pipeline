@@ -6,5 +6,6 @@ include: "rules/mapping.smk"
 rule all:
     input:
         "results/inputs/samples_validated.tsv",
-        expand("results/fastp/{sample}_R1.trimmed.fastq.gz", sample=SAMPLES),
         "results/qc/read_qc_summary.tsv",
+        expand("results/mapped/{sample}.flagstat.txt", sample=SAMPLES),
+        expand("results/mapped/{sample}.mdup.bam.bai", sample=SAMPLES)
