@@ -20,3 +20,11 @@ rule fastp:
         "-o {output.r1} -O {output.r2} "
         "--json {output.json} --html {output.html} "
         "-w {threads}{params.extra} 2> {log}"
+
+rule fastp_summary:
+    input:
+        expand("results/qc/{sample}.fastp.json", sample=SAMPLES)
+    output:
+        "results/qc/read_qc_summary.tsv"
+    script:
+        "../scripts/fastp_summary.py"
