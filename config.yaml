@@ -11,3 +11,12 @@ bwa:
 threads:
   fastp: 4
   bwa: 6
+
+# java memory per GATK job in GB, you can set to fit your machine
+gatk:
+  mem_gb: 8 
+
+# You can change the values if you want
+coverage:
+  window_size: 10000    
+  window_step: 5000     

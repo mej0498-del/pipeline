@@ -31,6 +31,10 @@ pipeline/
 ├── config.yaml
 ├── samples.tsv
 ├── README.md
+├── resources/                      
+│   ├── reference.fasta             # you provide this
+│   ├── reference.fasta.fai         # created by samtools faidx
+│   └── reference.fasta.{amb,ann,bwt,pac,sa}   # created by bwa index
 ├── workflow/
 │   ├── Snakefile                   # includes + rule all
 │   ├── rules/
@@ -53,6 +57,9 @@ pipeline/
     ├── trimmed/
     │   ├── {sample}_R1.fastq.gz    
     │   └── {sample}_R2.fastq.gz
+    ├── reference/
+    │   ├── chromosome.tab          # chromosome names and lengths
+    │   └── sliding_windows.bed     # sliding windows  
     ├── mapped/
     │   ├── {sample}.mdup.bam           # final BAM
     │   ├── {sample}.mdup.bam.bai       # BAM index
@@ -93,6 +100,15 @@ Place paired-end reads in `data/raw/` named `{sample}_R1.fastq.gz` and `{sample}
 python workflow/scripts/make_samples.py
 ```
 
+## Input data
+
+- **Reads:** paired-end FASTQ files in `data/raw/`, named `{sample}_R1.fastq.gz` and `{sample}_R2.fastq.gz`.
+  Single-end reads are not supported.
+- **Reference genome:** an uncompressed FASTA file (any name, e.g. `.fa`, `.fasta`)
+  placed in `resources/`. Set its path in `config.yaml` (`reference` key).
+  The index files (`.fai` and the BWA index) are created automatically next to it.
+  You have to avoid spaces in the file and folder names.
+
 The script lists every `*_R1.fastq.gz` file in `data/raw/` and writes the sample sheet necessary with the columns `sample`, `read_type`, `r1`, `r2`. You can also write `samples.tsv` by hand if you are working with small number of samples
 
 ### Configuration
@@ -104,6 +120,7 @@ All settings live in `config.yaml`. The defaults are intentionally minimal, so y
 | `samples` | Path to the sample sheet | `samples.tsv` |
 | `fastp.extra` | Extra command-line options passed to fastp | empty (fastp defaults) |
 | `threads.fastp` | Threads used by fastp | `4` |
+| `reference` | Path to the reference genome FASTA (uncompressed, any file name) | none, required |
 
 Example: trim reads shorter than 50 bp and require base quality of at least 20:
 

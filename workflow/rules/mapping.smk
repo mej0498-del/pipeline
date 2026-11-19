@@ -46,7 +46,6 @@ rule filter_mapped:
     shell:
         "samtools view -Sb -F 4 -@ {threads} {input} > {output} 2> {log}"
 
-
 rule mark_duplicates:
     input:
         "results/mapped/{sample}.mapped.bam"
@@ -64,7 +63,6 @@ rule mark_duplicates:
         gatk --java-options "-Xmx{params.mem_gb}g" MarkDuplicates \
             -I {input} -O {output.bam} -M {output.metrics} > {log} 2>&1
         """
-
 
 rule samtools_index:
     input:
