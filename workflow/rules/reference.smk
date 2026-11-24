@@ -1,4 +1,19 @@
+import os
 BWA_INDEX_EXT = [".amb", ".ann", ".bwt", ".pac", ".sa"]
+import os
+
+rule dict:
+    input:
+        config["reference"],
+    output:
+        os.path.splitext(config["reference"])[0] + ".dict",
+    log:
+        "logs/dict/dict.log"
+    conda:
+        "../envs/gatk.yaml"
+    shell:
+        "gatk CreateSequenceDictionary -R {input} -O {output} 2> {log}"
+
 rule bwa_index:
     input:
         rf=config["reference"],
