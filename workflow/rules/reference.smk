@@ -1,6 +1,5 @@
 import os
 BWA_INDEX_EXT = [".amb", ".ann", ".bwt", ".pac", ".sa"]
-import os
 
 rule dict:
     input:
@@ -14,7 +13,7 @@ rule dict:
     shell:
         "gatk CreateSequenceDictionary -R {input} -O {output} 2> {log}"
 
-rule bwa_index:
+rule bwa_index
     input:
         rf=config["reference"],
     output:
