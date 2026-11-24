@@ -61,6 +61,8 @@ pipeline/
     │   ├── chromosome.tab          # chromosome names and lengths
     │   └── sliding_windows.bed     # sliding windows  
     │
+    ├──variants/
+    │   └── {sample}.g.vcf.gz  
     ├──coverage/
     │   └── {sample}.slidingwindow.tab   # median depth per window
     ├── mapped/

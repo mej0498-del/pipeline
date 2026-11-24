@@ -15,6 +15,7 @@ threads:
 # java memory per GATK job in GB, you can set to fit your machine
 gatk:
   mem_gb: 8 
+  ploidy: 2     # set to your organism's baseline ploidy
 
 # You can change the values if you want
 coverage:
