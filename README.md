@@ -60,6 +60,9 @@ pipeline/
     ├── reference/
     │   ├── chromosome.tab          # chromosome names and lengths
     │   └── sliding_windows.bed     # sliding windows  
+    │
+    ├──coverage/
+    │   └── {sample}.slidingwindow.tab   # median depth per window
     ├── mapped/
     │   ├── {sample}.mdup.bam           # final BAM
     │   ├── {sample}.mdup.bam.bai       # BAM index
