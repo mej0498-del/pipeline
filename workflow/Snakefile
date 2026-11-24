@@ -2,6 +2,7 @@ include: "rules/common.smk"
 include: "rules/qc.smk"
 include: "rules/reference.smk" 
 include: "rules/mapping.smk"
+include: "rules/coverage.smk"
 
 rule all:
     input:
@@ -9,3 +10,4 @@ rule all:
         "results/qc/read_qc_summary.tsv",
         expand("results/mapped/{sample}.flagstat.txt", sample=SAMPLES),
         expand("results/mapped/{sample}.mdup.bam.bai", sample=SAMPLES)
+        expand("results/coverage/{sample}.slidingwindow.tab", sample=SAMPLES),
